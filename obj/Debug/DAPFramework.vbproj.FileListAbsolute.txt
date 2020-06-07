@@ -29,3 +29,14 @@ C:\Users\weiss\Desktop\studs6\cscm\DAPFramework\DAPFramework\obj\Debug\DAPFramew
 C:\Users\weiss\Desktop\studs6\cscm\DAPFramework\DAPFramework\obj\Debug\DAPFramework.exe
 C:\Users\weiss\Desktop\studs6\cscm\DAPFramework\DAPFramework\obj\Debug\DAPFramework.xml
 C:\Users\weiss\Desktop\studs6\cscm\DAPFramework\DAPFramework\obj\Debug\DAPFramework.pdb
+C:\Users\weiss\Desktop\cscm-dap-ta\bin\Debug\DAPFramework.exe.config
+C:\Users\weiss\Desktop\cscm-dap-ta\bin\Debug\DAPFramework.exe
+C:\Users\weiss\Desktop\cscm-dap-ta\bin\Debug\DAPFramework.pdb
+C:\Users\weiss\Desktop\cscm-dap-ta\bin\Debug\DAPFramework.xml
+C:\Users\weiss\Desktop\cscm-dap-ta\obj\Debug\DAPFramework.vbprojAssemblyReference.cache
+C:\Users\weiss\Desktop\cscm-dap-ta\obj\Debug\DAPFramework.Resources.resources
+C:\Users\weiss\Desktop\cscm-dap-ta\obj\Debug\DAPFramework.vbproj.GenerateResource.cache
+C:\Users\weiss\Desktop\cscm-dap-ta\obj\Debug\DAPFramework.vbproj.CoreCompileInputs.cache
+C:\Users\weiss\Desktop\cscm-dap-ta\obj\Debug\DAPFramework.exe
+C:\Users\weiss\Desktop\cscm-dap-ta\obj\Debug\DAPFramework.xml
+C:\Users\weiss\Desktop\cscm-dap-ta\obj\Debug\DAPFramework.pdb

@@ -1,7 +1,7 @@
 ﻿Module main
 
     Sub Main()
-        Dim inDes As Integer = 3 '{3,5,7,25,50,75}
+        Dim inDes As Integer = 7 '{3,5,7,25,50,75}
         Dim outDes As Integer = 7 '{3,5,7,25,50,75}
         Dim alphaa As Double = 0.3 '[0.1,0.5][0.6,0.9]
         Dim alphab As Double = 0.5 '[0.1,0.5][0.6,0.9]
@@ -76,7 +76,7 @@
             ' check if maximum output destinations per segment is violated
             Dim outputsPerSegment() As Integer = Enumerable.Repeat(0, instance.NumberOfSegments).ToArray  ' array to count outputs per segment initialized with zeros
             Dim validSolution As Boolean = True
-            For j = 0 To instance.OutDes - 1 ' count outbound destinations for all segments
+            For j = 0 To instance.DsOut - 1 ' count outbound destinations for all segments
                 outputsPerSegment(newOutboundDestination(j) - 1) += 1
                 If outputsPerSegment(newOutboundDestination(j) - 1) > instance.DsOut Then
                     validSolution = False
