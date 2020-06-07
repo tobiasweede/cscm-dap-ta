@@ -25,10 +25,11 @@
 
     Sub thresholdAccepting(ByRef instance As instance)
         ' init
-        Dim temperature As Integer = 100 ' TA temperature
-        Dim stopTemperature As Integer = 2 ' stop temperature
-        Dim cooldownFactor As Double = 0.8 ' cooldown rate
+        Dim temperature As Integer = 1000 ' TA temperature
+        Dim stopTemperature As Integer = 100 ' stop temperature
+        Dim cooldownFactor As Double = 0.05 ' cooldown rate
         Dim objective As Integer = 0 ' objective value
+        Dim bestObjective As Integer = 0 ' objective value
         Dim inboundDestination(instance.InbDes - 1) As Integer ' array for inbound destinations
         Dim outboundDestination(instance.OutDes - 1) As Integer ' array for outbound destinations
         Dim bestOutboundDestination(instance.OutDes - 1) As Integer ' array for best outbound destinations
@@ -46,7 +47,9 @@
             outboundDestination(j) = 1 + (outboundAssigned \ instance.DsOut)
             outboundAssigned += 1
         Next
-        objective = evaluateObjective(instance, inboundDestination, outboundDestination) ' initial (best) objective
+        objective = evaluateObjective(instance, inboundDestination, outboundDestination) ' calculate initial (best) objective
+        outboundDestination.CopyTo(bestOutboundDestination, 0) ' init best assignment with initial assignment
+        bestObjective = objective ' init best objective with initial objective
         Console.WriteLine("initial objective: " & objective)
         Console.WriteLine("initial output assignment: ")
         For j = 0 To instance.OutDes - 1 ' for all outbound destinations
@@ -80,14 +83,20 @@
                     Exit For
                 End If
             Next
-            ' save new (valid) solution if objective is better
-            If validSolution And newObjective <= objective Then
+            ' save new (valid) solution if threshold is accepted
+            Dim deltaTemperature As Integer = newObjective - objective
+            If validSolution And deltaTemperature <= temperature Then
                 objective = newObjective
                 newOutboundDestination.CopyTo(outboundDestination, 0)
             End If
-            temperature *= cooldownFactor ' cooldown
+            ' save new (valid) solution if it is better than the old best f(S) < f(S*) ?
+            If validSolution And newObjective <= bestObjective Then
+                bestObjective = newObjective
+                newOutboundDestination.CopyTo(bestOutboundDestination, 0)
+            End If
+            temperature *= 1 - cooldownFactor ' cooldown T := T*(1-SK)
             Debug.WriteLine("temperature: " & temperature)
-        Loop While stopTemperature < temperature
+        Loop While stopTemperature < temperature ' loop until T <= T_stop is reached
 
         Console.WriteLine("best objective: " & objective)
         Console.WriteLine("best output assignment: ")
